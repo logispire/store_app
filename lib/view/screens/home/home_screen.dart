@@ -57,9 +57,11 @@ class HomeScreen extends StatelessWidget {
             icon: GetBuilder<NotificationController>(
                 builder: (notificationController) {
               return Stack(children: [
-                Icon(Icons.notifications,
-                    size: 25,
-                    color: Theme.of(context).textTheme.bodyLarge!.color),
+                Image.asset(
+                  "assets/icons/notification.png",
+                  height: 23,
+                  color: Colors.black,
+                ),
                 notificationController.hasNotification
                     ? Positioned(
                         top: 0,

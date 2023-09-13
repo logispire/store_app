@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:sixam_mart_store/util/app_constants.dart';
 import 'package:sixam_mart_store/util/dimensions.dart';
 import 'package:sixam_mart_store/util/images.dart';
 import 'package:sixam_mart_store/view/screens/bank/wallet_screen.dart';
@@ -13,6 +14,7 @@ import 'package:get/get.dart';
 
 class DashboardScreen extends StatefulWidget {
   final int pageIndex;
+
   const DashboardScreen({Key? key, required this.pageIndex}) : super(key: key);
 
   @override
@@ -24,6 +26,7 @@ class DashboardScreenState extends State<DashboardScreen> {
   int _pageIndex = 0;
   late List<Widget> _screens;
   FlutterLocalNotificationsPlugin? flutterLocalNotificationsPlugin;
+
   // Timer _timer;
   // int _orderCount;
 
@@ -99,60 +102,116 @@ class DashboardScreenState extends State<DashboardScreen> {
         }
       },
       child: Scaffold(
-        floatingActionButton: !GetPlatform.isMobile
-            ? null
-            : FloatingActionButton(
-                elevation: 5,
-                backgroundColor: _pageIndex == 2
-                    ? Theme.of(context).primaryColor
-                    : Theme.of(context).cardColor,
-                onPressed: () {
-                  _setPage(2);
-                },
-                child: Image.asset(
-                  Images.restaurant,
-                  height: 20,
-                  width: 20,
-                  color: _pageIndex == 2
-                      ? Theme.of(context).cardColor
-                      : Theme.of(context).disabledColor,
-                ),
-              ),
-        floatingActionButtonLocation: !GetPlatform.isMobile
-            ? null
-            : FloatingActionButtonLocation.centerDocked,
+        //TODO:OLD
+        // floatingActionButton: !GetPlatform.isMobile
+        //     ? null
+        //     : FloatingActionButton(
+        //         elevation: 5,
+        //         backgroundColor: _pageIndex == 2
+        //             ? Theme.of(context).primaryColor
+        //             : Theme.of(context).cardColor,
+        //         onPressed: () {
+        //           _setPage(2);
+        //         },
+        //         child: Image.asset(
+        //           Images.restaurant,
+        //           height: 20,
+        //           width: 20,
+        //           color: _pageIndex == 2
+        //               ? Theme.of(context).cardColor
+        //               : Theme.of(context).disabledColor,
+        //         ),
+        //       ),
+        // floatingActionButtonLocation: !GetPlatform.isMobile
+        //     ? null
+        //     : FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: !GetPlatform.isMobile
             ? const SizedBox()
             : BottomAppBar(
                 elevation: 5,
                 notchMargin: 5,
                 //shape: const CircularNotchedRectangle(),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
-                  child: Row(children: [
-                    BottomNavItem(
-                        iconData: Icons.home,
-                        isSelected: _pageIndex == 0,
-                        onTap: () => _setPage(0)),
-                    BottomNavItem(
-                        iconData: Icons.shopping_bag,
-                        isSelected: _pageIndex == 1,
-                        onTap: () => _setPage(1)),
-                    const Expanded(child: SizedBox()),
-                    BottomNavItem(
-                        iconData: Icons.monetization_on,
-                        isSelected: _pageIndex == 3,
-                        onTap: () => _setPage(3)),
-                    BottomNavItem(
-                        iconData: Icons.menu,
-                        isSelected: _pageIndex == 4,
-                        onTap: () {
-                          Get.bottomSheet(const MenuScreen(),
-                              backgroundColor: Colors.transparent,
-                              isScrollControlled: true);
-                        }),
-                  ]),
+                child: Container(
+                  color: ColorConstants.secondary,
+                  padding: const EdgeInsets.only(
+                      top: 12, bottom: 12, left: 15, right: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      //TODO:OLD
+                      IconButton(
+                        onPressed: () => _setPage(0),
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(maxHeight: 35),
+                        icon: Image.asset(
+                          "assets/icons/home.png",
+                          height: 23,
+                          color: getBottomIconColor(_pageIndex == 0),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () => _setPage(1),
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(maxHeight: 35),
+                        icon: Image.asset(
+                          "assets/icons/shopping_bag.png",
+                          height: 23,
+                          color: getBottomIconColor(_pageIndex == 1),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () => _setPage(2),
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(maxHeight: 35),
+                        icon: Image.asset(
+                          "assets/icons/my_store.png",
+                          height: 23,
+                          color: getBottomIconColor(_pageIndex == 2),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () => _setPage(3),
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(maxHeight: 35),
+                        icon: Image.asset(
+                          "assets/icons/wallet.png",
+                          height: 23,
+                          color: getBottomIconColor(_pageIndex == 3),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () => _setPage(4),
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(maxHeight: 35),
+                        icon: Image.asset(
+                          "assets/icons/menu.png",
+                          height: 23,
+                          color: getBottomIconColor(_pageIndex == 4),
+                        ),
+                      ),
+                      // BottomNavItem(
+                      //     iconData: Icons.home,
+                      //     isSelected: _pageIndex == 0,
+                      //     onTap: () => _setPage(0)),
+                      // BottomNavItem(
+                      //     iconData: Icons.shopping_bag,
+                      //     isSelected: _pageIndex == 1,
+                      //     onTap: () => _setPage(1)),
+                      // const Expanded(child: SizedBox()),
+                      // BottomNavItem(
+                      //     iconData: Icons.monetization_on,
+                      //     isSelected: _pageIndex == 3,
+                      //     onTap: () => _setPage(3)),
+                      // BottomNavItem(
+                      //     iconData: Icons.menu,
+                      //     isSelected: _pageIndex == 4,
+                      //     onTap: () {
+                      //       Get.bottomSheet(const MenuScreen(),
+                      //           backgroundColor: Colors.transparent,
+                      //           isScrollControlled: true);
+                      //     }),
+                    ],
+                  ),
                 ),
               ),
         body: PageView.builder(
@@ -165,6 +224,14 @@ class DashboardScreenState extends State<DashboardScreen> {
         ),
       ),
     );
+  }
+
+  Color getBottomIconColor(bool isSelected) {
+    if (isSelected) {
+      return ColorConstants.primary;
+    } else {
+      return Colors.white;
+    }
   }
 
   void _setPage(int pageIndex) {

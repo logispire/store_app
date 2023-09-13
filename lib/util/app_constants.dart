@@ -1,5 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:sixam_mart_store/data/model/response/language_model.dart';
 import 'package:sixam_mart_store/util/images.dart';
+
+class ColorConstants {
+  static Color primary = const Color(0xff227C3E);
+  static Color secondary = const Color(0xff67BB6A);
+}
 
 class AppConstants {
   static const String appName = '6amMart Store';

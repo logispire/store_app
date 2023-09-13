@@ -65,6 +65,7 @@ flutter:
   assets:
     - assets/image/
     - assets/language/
+    - assets/icons/
     - assets/notification.mp3
 
   fonts:

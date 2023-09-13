@@ -17,10 +17,11 @@ import 'package:get/get.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'helper/get_di.dart' as di;
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 Future<void> main() async {
-  if(!GetPlatform.isWeb) {
+  if (!GetPlatform.isWeb) {
     HttpOverrides.global = MyHttpOverrides();
   }
   setPathUrlStrategy();
@@ -31,14 +32,15 @@ Future<void> main() async {
   NotificationBody? body;
   try {
     if (GetPlatform.isMobile) {
-      final RemoteMessage? remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
+      final RemoteMessage? remoteMessage =
+          await FirebaseMessaging.instance.getInitialMessage();
       if (remoteMessage != null) {
         body = NotificationHelper.convertNotification(remoteMessage.data);
       }
       await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
       FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
     }
-  }catch(_) {}
+  } catch (_) {}
 
   runApp(MyApp(languages: languages, body: body));
 }
@@ -46,7 +48,8 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   final Map<String, Map<String, String>>? languages;
   final NotificationBody? body;
-  const MyApp({Key? key, required this.languages, required this.body}) : super(key: key);
+  const MyApp({Key? key, required this.languages, required this.body})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +62,8 @@ class MyApp extends StatelessWidget {
           theme: themeController.darkTheme ? dark : light,
           locale: localizeController.locale,
           translations: Messages(languages: languages),
-          fallbackLocale: Locale(AppConstants.languages[0].languageCode!, AppConstants.languages[0].countryCode),
+          fallbackLocale: Locale(AppConstants.languages[0].languageCode!,
+              AppConstants.languages[0].countryCode),
           initialRoute: RouteHelper.getSplashRoute(body),
           getPages: RouteHelper.routes,
           defaultTransition: Transition.topLevel,
@@ -73,7 +77,8 @@ class MyApp extends StatelessWidget {
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
-

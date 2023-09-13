@@ -140,15 +140,16 @@ class AppConstants {
         languageName: 'English',
         countryCode: 'US',
         languageCode: 'en'),
-    LanguageModel(
-        imageUrl: Images.arabic,
-        languageName: 'Arabic',
-        countryCode: 'SA',
-        languageCode: 'ar'),
-    LanguageModel(
-        imageUrl: Images.arabic,
-        languageName: 'Spanish',
-        countryCode: 'ES',
-        languageCode: 'es'),
+    //TODO:OLD
+    // LanguageModel(
+    //     imageUrl: Images.arabic,
+    //     languageName: 'Arabic',
+    //     countryCode: 'SA',
+    //     languageCode: 'ar'),
+    // LanguageModel(
+    //     imageUrl: Images.arabic,
+    //     languageName: 'Spanish',
+    //     countryCode: 'ES',
+    //     languageCode: 'es'),
   ];
 }

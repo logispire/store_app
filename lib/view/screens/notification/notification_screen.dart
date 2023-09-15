@@ -64,117 +64,110 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         await notificationController.getNotificationList();
                       },
                       child: Scrollbar(
-                          child: SingleChildScrollView(
-                              child: Center(
-                                  child: SizedBox(
-                                      width: 1170,
-                                      child: ListView.builder(
-                                        itemCount: notificationController
-                                            .notificationList!.length,
-                                        padding: EdgeInsets.zero,
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemBuilder: (context, index) {
-                                          DateTime originalDateTime =
-                                              DateConverter
-                                                  .dateTimeStringToDate(
-                                                      notificationController
-                                                          .notificationList![
-                                                              index]
-                                                          .createdAt!);
-                                          DateTime convertedDate = DateTime(
-                                              originalDateTime.year,
-                                              originalDateTime.month,
-                                              originalDateTime.day);
-                                          bool addTitle = false;
-                                          if (!dateTimeList
-                                              .contains(convertedDate)) {
-                                            addTitle = true;
-                                            dateTimeList.add(convertedDate);
-                                          }
-                                          return Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                addTitle
-                                                    ? Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .fromLTRB(
-                                                                10, 10, 10, 0),
-                                                        child: Text(DateConverter
-                                                            .dateTimeStringToDateOnly(
-                                                                notificationController
-                                                                    .notificationList![
-                                                                        index]
-                                                                    .createdAt!)),
-                                                      )
-                                                    : const SizedBox(),
-                                                ListTile(
-                                                  onTap: () {
-                                                    showDialog(
-                                                        context: context,
-                                                        builder: (BuildContext
-                                                            context) {
-                                                          return NotificationDialog(
-                                                              notificationModel:
-                                                                  notificationController
-                                                                          .notificationList![
-                                                                      index]);
-                                                        });
-                                                  },
-                                                  leading: ClipOval(
-                                                      child: CustomImage(
-                                                    isNotification: true,
-                                                    height: 40,
-                                                    width: 40,
-                                                    fit: BoxFit.cover,
-                                                    image:
-                                                        '${Get.find<SplashController>().configModel!.baseUrls!.notificationImageUrl}'
-                                                        '/${notificationController.notificationList![index].image}',
-                                                  )),
-                                                  contentPadding:
-                                                      const EdgeInsets
-                                                          .symmetric(
-                                                          horizontal: 12),
-                                                  title: Text(
-                                                    notificationController
+                        child: SingleChildScrollView(
+                          child: Center(
+                            child: SizedBox(
+                              width: 1170,
+                              child: ListView.builder(
+                                itemCount: notificationController
+                                    .notificationList!.length,
+                                padding: EdgeInsets.zero,
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  DateTime originalDateTime =
+                                      DateConverter.dateTimeStringToDate(
+                                          notificationController
+                                              .notificationList![index]
+                                              .createdAt!);
+                                  DateTime convertedDate = DateTime(
+                                      originalDateTime.year,
+                                      originalDateTime.month,
+                                      originalDateTime.day);
+                                  bool addTitle = false;
+                                  if (!dateTimeList.contains(convertedDate)) {
+                                    addTitle = true;
+                                    dateTimeList.add(convertedDate);
+                                  }
+                                  return Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        addTitle
+                                            ? Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        10, 10, 10, 0),
+                                                child: Text(DateConverter
+                                                    .dateTimeStringToDateOnly(
+                                                        notificationController
                                                             .notificationList![
                                                                 index]
-                                                            .title ??
-                                                        '',
-                                                    style:
-                                                        robotoMedium.copyWith(
-                                                            fontSize: Dimensions
-                                                                .fontSizeSmall),
-                                                  ),
-                                                  subtitle: Text(
-                                                    notificationController
-                                                            .notificationList![
-                                                                index]
-                                                            .description ??
-                                                        '',
-                                                    style:
-                                                        robotoRegular.copyWith(
-                                                            fontSize: Dimensions
-                                                                .fontSizeSmall),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      horizontal: Dimensions
-                                                          .paddingSizeExtraSmall),
-                                                  child: Divider(
-                                                    color: Theme.of(context)
-                                                        .disabledColor,
-                                                    height: 8,
-                                                  ),
-                                                ),
-                                              ]);
-                                        },
-                                      ))))),
+                                                            .createdAt!)),
+                                              )
+                                            : const SizedBox(),
+                                        ListTile(
+                                          onTap: () {
+                                            showDialog(
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return NotificationDialog(
+                                                      notificationModel:
+                                                          notificationController
+                                                                  .notificationList![
+                                                              index]);
+                                                });
+                                          },
+                                          leading: ClipOval(
+                                              child: CustomImage(
+                                            isNotification: true,
+                                            height: 40,
+                                            width: 40,
+                                            fit: BoxFit.cover,
+                                            image:
+                                                '${Get.find<SplashController>().configModel!.baseUrls!.notificationImageUrl}'
+                                                '/${notificationController.notificationList![index].image}',
+                                          )),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                  horizontal: 12),
+                                          title: Text(
+                                            notificationController
+                                                    .notificationList![index]
+                                                    .title ??
+                                                '',
+                                            style: robotoMedium.copyWith(
+                                                fontSize:
+                                                    Dimensions.fontSizeSmall),
+                                          ),
+                                          subtitle: Text(
+                                            notificationController
+                                                    .notificationList![index]
+                                                    .description ??
+                                                '',
+                                            style: robotoRegular.copyWith(
+                                                fontSize:
+                                                    Dimensions.fontSizeSmall),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: Dimensions
+                                                  .paddingSizeExtraSmall),
+                                          child: Divider(
+                                            color:
+                                                Theme.of(context).disabledColor,
+                                            height: 8,
+                                          ),
+                                        ),
+                                      ]);
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     )
                   : Center(child: Text('no_notification_found'.tr))
               : const Center(child: CircularProgressIndicator());

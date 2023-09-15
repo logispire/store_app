@@ -138,7 +138,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      //TODO:OLD
+                      //TODO:OLDw
                       IconButton(
                         onPressed: () => _setPage(0),
                         padding: EdgeInsets.zero,
@@ -180,7 +180,11 @@ class DashboardScreenState extends State<DashboardScreen> {
                         ),
                       ),
                       IconButton(
-                        onPressed: () => _setPage(4),
+                        onPressed: () {
+                          Get.bottomSheet(const MenuScreen(),
+                              backgroundColor: Colors.transparent,
+                              isScrollControlled: true);
+                        },
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(maxHeight: 35),
                         icon: Image.asset(

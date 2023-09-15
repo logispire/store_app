@@ -222,7 +222,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                         width:
                                             Dimensions.paddingSizeExtraSmall),
                                     const Expanded(child: SizedBox()),
-                                    const Icon(Icons.watch_later, size: 17),
+                                    const Icon(Icons.watch_later_outlined,
+                                        size: 17),
                                     const SizedBox(
                                         width:
                                             Dimensions.paddingSizeExtraSmall),

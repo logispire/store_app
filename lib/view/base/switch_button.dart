@@ -4,11 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SwitchButton extends StatefulWidget {
-  final IconData icon;
+  final IconData? icon;
+  final String? imageData;
   final String title;
   final bool? isButtonActive;
   final Function onTap;
-  const SwitchButton({Key? key, required this.icon, required this.title, required this.onTap, this.isButtonActive}) : super(key: key);
+
+  const SwitchButton(
+      {Key? key,
+      this.icon,
+      this.imageData,
+      required this.title,
+      required this.onTap,
+      this.isButtonActive})
+      : super(key: key);
 
   @override
   State<SwitchButton> createState() => _SwitchButtonState();
@@ -28,7 +37,7 @@ class _SwitchButtonState extends State<SwitchButton> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        if(_buttonActive != null) {
+        if (_buttonActive != null) {
           setState(() {
             _buttonActive = !_buttonActive!;
           });
@@ -38,30 +47,47 @@ class _SwitchButtonState extends State<SwitchButton> {
       child: Container(
         padding: EdgeInsets.symmetric(
           horizontal: Dimensions.paddingSizeSmall,
-          vertical: _buttonActive != null ? Dimensions.paddingSizeExtraSmall : Dimensions.paddingSizeDefault,
+          vertical: _buttonActive != null
+              ? Dimensions.paddingSizeExtraSmall
+              : Dimensions.paddingSizeDefault,
         ),
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
-          boxShadow: [BoxShadow(color: Colors.grey[Get.isDarkMode ? 800 : 200]!, spreadRadius: 1, blurRadius: 5)],
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey[Get.isDarkMode ? 800 : 200]!,
+                spreadRadius: 1,
+                blurRadius: 5)
+          ],
         ),
         child: Row(children: [
-          Icon(widget.icon, size: 25),
+          if (widget.icon != null)
+            Icon(widget.icon, size: 25)
+          else if (widget.imageData != null)
+            Image.asset(
+              "${widget.imageData}",
+              height: 23,
+              color: Colors.black,
+            ),
           const SizedBox(width: Dimensions.paddingSizeSmall),
           Expanded(child: Text(widget.title, style: robotoRegular)),
-         _buttonActive != null ? Switch(
-            value: _buttonActive!,
-            onChanged: (bool isActive) {
-              if(_buttonActive != null) {
-                setState(() {
-                  _buttonActive = !_buttonActive!;
-                });
-              }
-              widget.onTap();
-            },
-            activeColor: Theme.of(context).primaryColor,
-            activeTrackColor: Theme.of(context).primaryColor.withOpacity(0.5),
-          ) : const SizedBox(),
+          _buttonActive != null
+              ? Switch(
+                  value: _buttonActive!,
+                  onChanged: (bool isActive) {
+                    if (_buttonActive != null) {
+                      setState(() {
+                        _buttonActive = !_buttonActive!;
+                      });
+                    }
+                    widget.onTap();
+                  },
+                  activeColor: Theme.of(context).primaryColor,
+                  activeTrackColor:
+                      Theme.of(context).primaryColor.withOpacity(0.5),
+                )
+              : const SizedBox(),
         ]),
       ),
     );

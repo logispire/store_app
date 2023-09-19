@@ -1,6 +1,7 @@
 import 'package:sixam_mart_store/controller/auth_controller.dart';
 import 'package:sixam_mart_store/controller/splash_controller.dart';
 import 'package:sixam_mart_store/helper/route_helper.dart';
+import 'package:sixam_mart_store/util/app_constants.dart';
 import 'package:sixam_mart_store/util/dimensions.dart';
 import 'package:sixam_mart_store/util/images.dart';
 import 'package:sixam_mart_store/util/styles.dart';
@@ -65,9 +66,13 @@ class _SignInScreenState extends State<SignInScreen> {
                               // Center(child: Text(AppConstants.APP_NAME, style: robotoMedium.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE))),
                               const SizedBox(
                                   height: Dimensions.paddingSizeExtraLarge),
-                              Text('sign_in'.tr.toUpperCase(),
-                                  style: robotoBold.copyWith(
-                                      fontSize: Dimensions.fontSizeOverLarge)),
+                              Text(
+                                'sign_in'.tr,
+                                style: robotoRegular.copyWith(
+                                  fontSize: Dimensions.fontSizeExtraLarge,
+                                  color: ColorConstants.primary,
+                                ),
+                              ),
                               const SizedBox(
                                   height: Dimensions.paddingSizeExtraSmall),
 

@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                 Image.asset(
                   "assets/icons/notification.png",
                   height: 23,
-                  color: Colors.black,
+                  color: ColorConstants.primary,
                 ),
                 notificationController.hasNotification
                     ? Positioned(

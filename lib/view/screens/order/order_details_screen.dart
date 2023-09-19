@@ -222,8 +222,11 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                         width:
                                             Dimensions.paddingSizeExtraSmall),
                                     const Expanded(child: SizedBox()),
-                                    const Icon(Icons.watch_later_outlined,
-                                        size: 17),
+                                    Image.asset(
+                                      "assets/icons/clock.png",
+                                      height: 13,
+                                      color: Colors.black,
+                                    ),
                                     const SizedBox(
                                         width:
                                             Dimensions.paddingSizeExtraSmall),

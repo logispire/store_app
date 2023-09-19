@@ -1,4 +1,5 @@
 import 'package:country_code_picker/country_code.dart';
+import 'package:sixam_mart_store/util/app_constants.dart';
 import 'package:sixam_mart_store/util/dimensions.dart';
 import 'package:sixam_mart_store/util/styles.dart';
 import 'package:flutter/material.dart';
@@ -111,21 +112,21 @@ class CustomTextFieldState extends State<CustomTextField> {
               borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
               borderSide: BorderSide(
                   style: BorderStyle.solid,
-                  width: 2,
+                  width: 1,
                   color: Theme.of(context).primaryColor),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
               borderSide: BorderSide(
                   style: BorderStyle.solid,
-                  width: 2,
+                  width: 1,
                   color: Theme.of(context).primaryColor),
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
               borderSide: BorderSide(
                   style: BorderStyle.solid,
-                  width: 2,
+                  width: 1,
                   color: Theme.of(context).primaryColor),
             ),
             isDense: true,
@@ -177,16 +178,24 @@ class CustomTextFieldState extends State<CustomTextField> {
                 : widget.prefixIcon != null
                     ? Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: Dimensions.paddingSizeSmall),
+                            horizontal: Dimensions.paddingSizeDefault),
                         child: Image.asset(widget.prefixIcon!,
                             height: 20, width: 20),
                       )
                     : null,
             suffixIcon: widget.isPassword
                 ? IconButton(
-                    icon: Icon(
-                        _obscureText ? Icons.visibility_off : Icons.visibility,
-                        color: Theme.of(context).hintColor.withOpacity(0.3)),
+                    //TODO:OLD
+                    // icon: Icon(
+                    //     _obscureText ? Icons.visibility_off : Icons.visibility,
+                    //     color: Theme.of(context).hintColor.withOpacity(0.3)),
+                    icon: Image.asset(
+                      _obscureText
+                          ? "assets/icons/eyeslash.png"
+                          : "assets/icons/eye_open.png",
+                      height: 20,
+                      color: ColorConstants.primary,
+                    ),
                     onPressed: _toggle,
                   )
                 : null,

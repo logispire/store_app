@@ -93,7 +93,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(children: [
             GetBuilder<AuthController>(builder: (authController) {
               return Column(children: [
-                Get.find<AuthController>().modulePermission!.storeSetup!
+                Get.find<AuthController>().modulePermission?.storeSetup == true
                     ? Container(
                         padding:
                             const EdgeInsets.all(Dimensions.paddingSizeSmall),

@@ -64,43 +64,29 @@ class _NewPassScreenState extends State<NewPassScreen> {
                               style: robotoRegular,
                               textAlign: TextAlign.center),
                           const SizedBox(height: 50),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.circular(Dimensions.radiusSmall),
-                              color: Theme.of(context).cardColor,
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors
-                                        .grey[Get.isDarkMode ? 800 : 200]!,
-                                    spreadRadius: 1,
-                                    blurRadius: 5)
-                              ],
+                          Column(children: [
+                            CustomTextField(
+                              hintText: 'new_password'.tr,
+                              controller: _newPasswordController,
+                              focusNode: _newPasswordFocus,
+                              nextFocus: _confirmPasswordFocus,
+                              inputType: TextInputType.visiblePassword,
+                              prefixIcon: Images.lock,
+                              isPassword: true,
                             ),
-                            child: Column(children: [
-                              CustomTextField(
-                                hintText: 'new_password'.tr,
-                                controller: _newPasswordController,
-                                focusNode: _newPasswordFocus,
-                                nextFocus: _confirmPasswordFocus,
-                                inputType: TextInputType.visiblePassword,
-                                prefixIcon: Images.lock,
-                                isPassword: true,
-                                divider: true,
-                              ),
-                              CustomTextField(
-                                hintText: 'confirm_password'.tr,
-                                controller: _confirmPasswordController,
-                                focusNode: _confirmPasswordFocus,
-                                inputAction: TextInputAction.done,
-                                inputType: TextInputType.visiblePassword,
-                                prefixIcon: Images.lock,
-                                isPassword: true,
-                                onSubmit: (text) =>
-                                    GetPlatform.isWeb ? _resetPassword() : null,
-                              ),
-                            ]),
-                          ),
+                            const SizedBox(height: Dimensions.paddingSizeLarge),
+                            CustomTextField(
+                              hintText: 'confirm_password'.tr,
+                              controller: _confirmPasswordController,
+                              focusNode: _confirmPasswordFocus,
+                              inputAction: TextInputAction.done,
+                              inputType: TextInputType.visiblePassword,
+                              prefixIcon: Images.lock,
+                              isPassword: true,
+                              onSubmit: (text) =>
+                                  GetPlatform.isWeb ? _resetPassword() : null,
+                            ),
+                          ]),
                           const SizedBox(height: 30),
                           GetBuilder<AuthController>(builder: (authController) {
                             return !authController.isLoading

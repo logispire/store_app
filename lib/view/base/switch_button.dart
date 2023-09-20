@@ -1,3 +1,4 @@
+import 'package:sixam_mart_store/util/app_constants.dart';
 import 'package:sixam_mart_store/util/dimensions.dart';
 import 'package:sixam_mart_store/util/styles.dart';
 import 'package:flutter/material.dart';
@@ -67,8 +68,8 @@ class _SwitchButtonState extends State<SwitchButton> {
           else if (widget.imageData != null)
             Image.asset(
               "${widget.imageData}",
-              height: 23,
-              color: Colors.black,
+              height: 21,
+              color: ColorConstants.secondary,
             ),
           const SizedBox(width: Dimensions.paddingSizeSmall),
           Expanded(child: Text(widget.title, style: robotoRegular)),

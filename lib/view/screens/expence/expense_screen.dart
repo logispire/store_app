@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sixam_mart_store/controller/expense_controller.dart';
 import 'package:sixam_mart_store/helper/date_converter.dart';
+import 'package:sixam_mart_store/util/app_constants.dart';
 import 'package:sixam_mart_store/util/dimensions.dart';
 import 'package:sixam_mart_store/util/styles.dart';
 import 'package:sixam_mart_store/view/base/custom_app_bar.dart';
@@ -82,9 +83,13 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                         border: InputBorder.none,
                         hintText: 'search_with_order_id'.tr,
                         suffixIcon: IconButton(
-                          icon: Icon(expenseController.searchMode
-                              ? Icons.clear
-                              : Icons.search),
+                          icon: expenseController.searchMode
+                              ? const Icon(Icons.clear)
+                              : Image.asset(
+                                  "assets/icons/search.png",
+                                  height: 16,
+                                  color: Theme.of(context).primaryColor,
+                                ),
                           onPressed: () {
                             if (!expenseController.searchMode) {
                               if (_searchController.text.isNotEmpty) {

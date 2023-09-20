@@ -108,14 +108,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               : const SizedBox(),
                         ]),
                         const SizedBox(height: 30),
-                        SwitchButton(
-                            imageData: "assets/icons/dark_model.png",
-                            title: 'dark_mode'.tr,
-                            isButtonActive: Get.isDarkMode,
-                            onTap: () {
-                              Get.find<ThemeController>().toggleTheme();
-                            }),
-                        const SizedBox(height: Dimensions.paddingSizeSmall),
+                        // SwitchButton(
+                        //     imageData: "assets/icons/dark_model.png",
+                        //     title: 'dark_mode'.tr,
+                        //     isButtonActive: Get.isDarkMode,
+                        //     onTap: () {
+                        //       Get.find<ThemeController>().toggleTheme();
+                        //     }),
+                        // const SizedBox(height: Dimensions.paddingSizeSmall),
                         SwitchButton(
                           imageData: "assets/icons/notification.png",
                           title: 'notification'.tr,

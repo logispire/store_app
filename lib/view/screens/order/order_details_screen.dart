@@ -225,7 +225,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                     Image.asset(
                                       "assets/icons/clock.png",
                                       height: 13,
-                                      color: Colors.black,
+                                      color: ColorConstants.secondary,
                                     ),
                                     const SizedBox(
                                         width:

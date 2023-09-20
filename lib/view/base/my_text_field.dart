@@ -143,25 +143,32 @@ class MyTextFieldState extends State<MyTextField> {
             isDense: true,
             filled: true,
             fillColor: widget.fillColor ?? Theme.of(context).cardColor,
+            disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+              borderSide: BorderSide(
+                  style: BorderStyle.solid,
+                  width: 1,
+                  color: Theme.of(context).primaryColor),
+            ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
               borderSide: BorderSide(
                   style: BorderStyle.solid,
-                  width: 2,
+                  width: 1,
                   color: Theme.of(context).primaryColor),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
               borderSide: BorderSide(
                   style: BorderStyle.solid,
-                  width: 2,
+                  width: 1,
                   color: Theme.of(context).primaryColor),
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
               borderSide: BorderSide(
                   style: BorderStyle.solid,
-                  width: 2,
+                  width: 1,
                   color: Theme.of(context).primaryColor),
             ),
             hintStyle:

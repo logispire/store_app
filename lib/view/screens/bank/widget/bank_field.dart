@@ -9,21 +9,27 @@ class BankField extends StatelessWidget {
   final FocusNode? nextFocus;
   final TextInputAction inputAction;
   final TextCapitalization capitalization;
+
   const BankField(
-      {Key? key, this.hintText = '',
-        this.controller,
-        this.focusNode,
-        this.nextFocus,
-        this.inputAction = TextInputAction.next,
-        this.capitalization = TextCapitalization.none}) : super(key: key);
+      {Key? key,
+      this.hintText = '',
+      this.controller,
+      this.focusNode,
+      this.nextFocus,
+      this.inputAction = TextInputAction.next,
+      this.capitalization = TextCapitalization.none})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-
-      Text(hintText, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor)),
+      Text(
+        hintText,
+        style: robotoBold.copyWith(
+            fontSize: Dimensions.paddingSizeDefault,
+            color: Theme.of(context).primaryColor),
+      ),
       const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-
       TextField(
         controller: controller,
         focusNode: focusNode,
@@ -36,13 +42,25 @@ class BankField extends StatelessWidget {
           hintText: hintText,
           isDense: true,
           filled: true,
-          fillColor: Theme.of(context).disabledColor.withOpacity(0.2),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(Dimensions.radiusSmall), borderSide: BorderSide.none),
+          fillColor: Theme.of(context).cardColor,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+            borderSide: BorderSide(
+              color: Theme.of(context).primaryColor,
+              width: 1,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+            borderSide: BorderSide(
+              color: Theme.of(context).primaryColor,
+              width: 1,
+            ),
+          ),
           hintStyle: robotoRegular.copyWith(color: Theme.of(context).hintColor),
         ),
       ),
       const SizedBox(height: Dimensions.paddingSizeDefault),
-
     ]);
   }
 }

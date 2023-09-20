@@ -65,9 +65,12 @@ class CustomTextFieldState extends State<CustomTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         widget.showTitle
-            ? Text(widget.hintText,
-                style:
-                    robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall))
+            ? Text(
+                widget.hintText,
+                style: robotoBold.copyWith(
+                    fontSize: Dimensions.paddingSizeDefault,
+                    color: Theme.of(context).primaryColor),
+              )
             : const SizedBox(),
         SizedBox(
             height: widget.showTitle ? Dimensions.paddingSizeExtraSmall : 0),

@@ -266,7 +266,7 @@ class HomeScreen extends StatelessWidget {
                     .runningOrders![orderController.orderIndex].orderList;
               }
 
-              return Get.find<AuthController>().modulePermission!.order!
+              return Get.find<AuthController>().modulePermission?.order == true
                   ? Column(children: [
                       orderController.runningOrders != null
                           ? Container(

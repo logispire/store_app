@@ -41,7 +41,7 @@ class Images {
   static const String maintenance = 'assets/image/maintenance.png';
   static const String image = 'assets/image/image.png';
   static const String send = 'assets/image/send.png';
-  static const String chat = 'assets/icons/coversation.png';
+  static const String chat = 'assets/icons/conversation.png';
   static const String pickMarker = 'assets/image/pick_marker.png';
   static const String couponBgDark = 'assets/image/coupon_bg_dark1.png';
   static const String couponVertical = 'assets/image/cupon.png';

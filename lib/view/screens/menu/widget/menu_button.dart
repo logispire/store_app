@@ -58,22 +58,25 @@ class MenuButton extends StatelessWidget {
       child: Column(children: [
         Container(
           height: size - (size * 0.2),
-          padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
+          padding: EdgeInsets.all(isProfile
+              ? Dimensions.paddingSizeExtraSmall
+              : Dimensions.paddingSizeDefault),
           margin: const EdgeInsets.symmetric(
               horizontal: Dimensions.paddingSizeSmall),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+            borderRadius: BorderRadius.circular(50),
             // color: isLogout
             //     ? Get.find<AuthController>().isLoggedIn()
             //         ? Colors.red
             //         : Colors.green
             //     : Theme.of(context).primaryColor,
             border: Border.all(
-              color: isLogout
-                  ? Get.find<AuthController>().isLoggedIn()
-                      ? Colors.red
-                      : Theme.of(context).primaryColor
-                  : Theme.of(context).primaryColor,
+              // color: isLogout
+              //     ? Get.find<AuthController>().isLoggedIn()
+              //         ? Colors.red
+              //         : Theme.of(context).primaryColor
+              //     : Theme.of(context).primaryColor,
+              color: Theme.of(context).primaryColor,
               width: 1,
             ),
             color: Colors.white,
@@ -91,11 +94,11 @@ class MenuButton extends StatelessWidget {
                   menu.icon,
                   width: size,
                   height: size,
-                  color: isLogout
-                      ? Get.find<AuthController>().isLoggedIn()
-                          ? Colors.red
-                          : Theme.of(context).primaryColor
-                      : Theme.of(context).primaryColor,
+                  // color: isLogout
+                  //     ? Get.find<AuthController>().isLoggedIn()
+                  //         ? Colors.red
+                  //         : null
+                  //     : null,
                 ),
         ),
         const SizedBox(height: Dimensions.paddingSizeExtraSmall),

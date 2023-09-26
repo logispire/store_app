@@ -24,32 +24,38 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: 'forgot_password'.tr),
-      body: SafeArea(child: Center(child: Scrollbar(child: SingleChildScrollView(
+      body: SafeArea(
+          child: Center(
+              child: Scrollbar(
+                  child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-        child: Center(child: SizedBox(width: 1170, child: Column(children: [
-
-          Text('please_enter_email'.tr, style: robotoRegular, textAlign: TextAlign.center),
-          const SizedBox(height: 50),
-
-          CustomTextField(
-            controller: _emailController,
-            inputType: TextInputType.emailAddress,
-            inputAction: TextInputAction.done,
-            hintText: 'email'.tr,
-            prefixIcon: Images.mail,
-            onSubmit: (text) => GetPlatform.isWeb ? _forgetPass() : null,
-          ),
-          const SizedBox(height: Dimensions.paddingSizeLarge),
-
-          GetBuilder<AuthController>(builder: (authController) {
-            return !authController.isLoading ? CustomButton(
-              buttonText: 'next'.tr,
-              onPressed: () => _forgetPass(),
-            ) : const Center(child: CircularProgressIndicator());
-          }),
-
-        ]))),
+        child: Center(
+            child: SizedBox(
+                width: 1170,
+                child: Column(children: [
+                  Text('please_enter_email'.tr,
+                      style: robotoRegular, textAlign: TextAlign.center),
+                  const SizedBox(height: 50),
+                  CustomTextField(
+                    controller: _emailController,
+                    inputType: TextInputType.emailAddress,
+                    inputAction: TextInputAction.done,
+                    hintText: 'email'.tr,
+                    prefixIcon: Images.mail,
+                    onSubmit: (text) =>
+                        GetPlatform.isWeb ? _forgetPass() : null,
+                  ),
+                  const SizedBox(height: Dimensions.paddingSizeLarge),
+                  GetBuilder<AuthController>(builder: (authController) {
+                    return !authController.isLoading
+                        ? CustomButton(
+                            buttonText: 'next'.tr,
+                            onPressed: () => _forgetPass(),
+                          )
+                        : const Center(child: CircularProgressIndicator());
+                  }),
+                ]))),
       )))),
     );
   }
@@ -58,13 +64,13 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
     String email = _emailController.text.trim();
     if (email.isEmpty) {
       showCustomSnackBar('enter_email_address'.tr);
-    }else if (!GetUtils.isEmail(email)) {
+    } else if (!GetUtils.isEmail(email)) {
       showCustomSnackBar('enter_a_valid_email_address'.tr);
-    }else {
+    } else {
       Get.find<AuthController>().forgetPassword(email).then((status) async {
         if (status.isSuccess) {
           Get.toNamed(RouteHelper.getVerificationRoute(email));
-        }else {
+        } else {
           showCustomSnackBar(status.message);
         }
       });

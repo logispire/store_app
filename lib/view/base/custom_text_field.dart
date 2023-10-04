@@ -144,33 +144,31 @@ class CustomTextFieldState extends State<CustomTextField> {
                     width: 95,
                     child: Row(children: [
                       Container(
-                          width: 85,
-                          height: 50,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(Dimensions.radiusSmall),
-                              bottomLeft:
-                                  Radius.circular(Dimensions.radiusSmall),
+                        width: 85,
+                        height: 50,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(Dimensions.radiusSmall),
+                            bottomLeft: Radius.circular(Dimensions.radiusSmall),
+                          ),
+                        ),
+                        margin: const EdgeInsets.only(right: 0),
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Center(
+                          child: CodePickerWidget(
+                            flagWidth: 25,
+                            padding: EdgeInsets.zero,
+                            onChanged: widget.onCountryChanged,
+                            initialSelection: widget.countryDialCode,
+                            favorite: [widget.countryDialCode!],
+                            textStyle: robotoRegular.copyWith(
+                              fontSize: Dimensions.fontSizeDefault,
+                              color:
+                                  Theme.of(context).textTheme.bodyMedium!.color,
                             ),
                           ),
-                          margin: const EdgeInsets.only(right: 0),
-                          padding: const EdgeInsets.only(left: 5),
-                          child: Center(
-                            child: CodePickerWidget(
-                              flagWidth: 25,
-                              padding: EdgeInsets.zero,
-                              onChanged: widget.onCountryChanged,
-                              initialSelection: widget.countryDialCode,
-                              favorite: [widget.countryDialCode!],
-                              textStyle: robotoRegular.copyWith(
-                                fontSize: Dimensions.fontSizeDefault,
-                                color: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .color,
-                              ),
-                            ),
-                          )),
+                        ),
+                      ),
                       Container(
                         height: 20,
                         width: 2,
